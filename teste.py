@@ -417,9 +417,6 @@ st.markdown("""
     <p class="hero-sub">A solução ideal para quem precisa de um site ou landing page rápida, profissional e editável sem depender de agências ou programadores.</p>
     <div style="margin-top: 50px; width: 300px;">
 """, unsafe_allow_html=True)
-st.markdown("""
-<a href="#templates" style="display: inline-block; background: linear-gradient(90deg, #7b2cbf, #9d4edd); color: white; border: none; padding: 25px 60px; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; border-radius: 0; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); text-decoration: none; transition: 0.4s; cursor: pointer;">CONHEÇA NOSSOS TEMPLATES ↓</a>
-""", unsafe_allow_html=True)
 
 # --- 5. PROVA SOCIAL (AVATARES FLOATING) ---
 st.markdown("""
