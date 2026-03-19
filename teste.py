@@ -568,7 +568,7 @@ with p2: # Featured
         <p>✓ Suporte técnico ágil</p>
     </div>
     """, unsafe_allow_html=True)
-    st.link_button("COMEÇAR AGORA", "#templates")
+    st.markdown('<a href="#templates" style="display: inline-block; background: linear-gradient(90deg, #7b2cbf, #9d4edd); color: white; border: none; padding: 25px 60px; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; border-radius: 0; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); text-decoration: none; font-family: Inter, sans-serif;">COMEÇAR AGORA</a>', unsafe_allow_html=True)
 
 with p3:
     st.markdown("""
