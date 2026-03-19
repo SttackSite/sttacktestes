@@ -585,8 +585,8 @@ with p3:
         <p>✓ Suporte específico para parceiros</p>
         <p>✓ Selo de parceiro desenvolvedor</p>
     </div>
-st.link_button("COMEÇAR AGORA", "https://pay.kiwify.com.br/fY9Kis9")
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+    st.link_button("COMEÇAR AGORA", "https://pay.kiwify.com.br/fY9Kis9")
 
 # --- 9. FAQ ---
 st.markdown('<div id="faq" style="padding: 100px 20%; background: #080808;">', unsafe_allow_html=True)
