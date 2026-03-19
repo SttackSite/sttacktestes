@@ -493,8 +493,8 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 3 & 4. SHOWCASE DE TEMPLATES (GRID 2D COM SCROLL) ---
 st.markdown('<div id="templates" style="padding: 120px 8%;">', unsafe_allow_html=True)
-st.markdown("""<h2>Navegue pelos modelos lateralmente e clique para ver cada <span class="serif-heavy"> template completo:</span></h2>
-<p style="color: var(--gold); font-family: 'Inter', sans-serif; font-size: 18px; margin-top: 20px;">Se algum fizer sentido para o seu negócio, você pode começar a editar facilmente ao final da própria página do template.</p>
+st.markdown("""<h2>Navegue pelos modelos lateralmente e clique para ver cada template completo</h2>
+<p> <span class="serif-heavy"> template completo:</span></p>
 <br><br>
 """, unsafe_allow_html=True)
 st.markdown("""
