@@ -568,7 +568,6 @@ with p2: # Featured
         <p>✓ Suporte técnico ágil</p>
     </div>
     """, unsafe_allow_html=True)
-    st.markdown('<a href="#templates" style="display: inline-block; background: linear-gradient(90deg, #7b2cbf, #9d4edd); color: white; border: none; padding: 14px 32px; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; border-radius: 0; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); text-decoration: none; font-family: Inter, sans-serif;">COMEÇAR AGORA</a>', unsafe_allow_html=True)
 
 with p3:
     st.markdown("""
@@ -586,7 +585,6 @@ with p3:
         <p>✓ Selo de parceiro desenvolvedor</p>
     </div>
     """, unsafe_allow_html=True)
-    st.link_button("COMEÇAR AGORA", "https://pay.kiwify.com.br/fY9Kis9")
 
 # --- 9. FAQ ---
 st.markdown('<div id="faq" style="padding: 100px 20%; background: #080808;">', unsafe_allow_html=True)
