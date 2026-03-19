@@ -416,7 +416,7 @@ st.markdown("""
 <div class="hero-section">
     <h1 class="hero-h1">Crie seu site ou landing page profissional em minutos<br><span class="serif-heavy" style="color:var(--gold)">Apenas editando templates prontos.</span></h1>
     <p class="hero-sub">A solução ideal para quem precisa de um site ou landing page rápida, profissional e editável sem depender de agências ou programadores.</p>
-    <div style="margin-top: 50px; width: 300px;">
+    </div>
 """, unsafe_allow_html=True)
 
 
