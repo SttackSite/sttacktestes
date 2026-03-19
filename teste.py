@@ -568,7 +568,7 @@ with p2: # Featured
         <p>✓ Suporte técnico ágil</p>
     </div>
     """, unsafe_allow_html=True)
-    st.link_button("COMEÇAR AGORA", "https://pay.kiwify.com.br/fY9Kis9")
+    st.link_button("COMEÇAR AGORA", "#templates")
 
 with p3:
     st.markdown("""
