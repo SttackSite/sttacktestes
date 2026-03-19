@@ -418,6 +418,30 @@ st.markdown("""
     <div style="margin-top: 50px; width: 300px;">
 """, unsafe_allow_html=True)
 
+
+# --- 7. PASSO A PASSO (INDUSTRIAL) ---
+st.markdown('<div id="como-funciona" style="padding: 100px 8%; background: #050505;">', unsafe_allow_html=True)
+st.markdown('<h2>PROCESSO <span class="serif-heavy">sem falhas.</span></h2><br><br>', unsafe_allow_html=True)
+
+steps = [
+    ("SELECIONE O MODELO IDEAL", "Escolha entre mais de 30 modelos validados o que mais combina com a identidade do seu negócio."),
+    ("CUSTOMIZAÇÃO RÁPIDA", "Utilize nosso ambiente exclusivo de edição para personalizar tudo o que precisar sem complicações."),
+    ("SETUP TÉCNICO GRATUITO", "Hospedamos seu site em minutos, com as melhores técnicas de SEO e com domínio Streamlit sem custo adicional, de forma rápida."),
+    ("LANÇAMENTO IMEDIATO", "Site no ar, otimizado e pronto para escalar seu negócio com uma estrutura de alta performance.")
+]
+
+for i, (title, desc) in enumerate(steps):
+    st.markdown(f"""
+    <div class="step-row">
+        <div class="step-num">0{i+1}</div>
+        <div>
+            <h3 style="color: var(--gold);">{title}</h3>
+            <p style="max-width: 400px; opacity: 0.6;">{desc}</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
 # --- 5. PROVA SOCIAL (AVATARES FLOATING) ---
 st.markdown("""
 <div id="clientes" class="client-section">
@@ -462,29 +486,6 @@ with col_u3:
     <div class="target-card">
         <h3>Freelancer</h3>
         <p>Venda nossos sites para seus clientes sem precisar programar do zero e fature com isso, aumentando sua margem de lucro entregando em tempo recorde.</p>
-    </div>
-    """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
-
-# --- 7. PASSO A PASSO (INDUSTRIAL) ---
-st.markdown('<div id="como-funciona" style="padding: 100px 8%; background: #050505;">', unsafe_allow_html=True)
-st.markdown('<h2>PROCESSO <span class="serif-heavy">sem falhas.</span></h2><br><br>', unsafe_allow_html=True)
-
-steps = [
-    ("SELECIONE O MODELO IDEAL", "Escolha entre mais de 30 modelos validados o que mais combina com a identidade do seu negócio."),
-    ("CUSTOMIZAÇÃO RÁPIDA", "Utilize nosso ambiente exclusivo de edição para personalizar tudo o que precisar sem complicações."),
-    ("SETUP TÉCNICO GRATUITO", "Hospedamos seu site em minutos, com as melhores técnicas de SEO e com domínio Streamlit sem custo adicional, de forma rápida."),
-    ("LANÇAMENTO IMEDIATO", "Site no ar, otimizado e pronto para escalar seu negócio com uma estrutura de alta performance.")
-]
-
-for i, (title, desc) in enumerate(steps):
-    st.markdown(f"""
-    <div class="step-row">
-        <div class="step-num">0{i+1}</div>
-        <div>
-            <h3 style="color: var(--gold);">{title}</h3>
-            <p style="max-width: 400px; opacity: 0.6;">{desc}</p>
-        </div>
     </div>
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
