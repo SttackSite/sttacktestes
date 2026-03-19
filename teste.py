@@ -586,8 +586,11 @@ with p3:
         <p>✓ Selo de parceiro desenvolvedor</p>
     </div>
     """, unsafe_allow_html=True)
-    st.markdown('<a href="#precos" class="stButton"><button>LIBERAR ACESSO DE REVENDA</button></a>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+st.markdown("""
+<div style="margin-top: 16px;">
+    <a href="#precos" style="display: inline-block; background: linear-gradient(90deg, #7b2cbf, #9d4edd); color: white; border: none; padding: 25px 60px; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; border-radius: 0; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); text-decoration: none; cursor: pointer; font-family: Inter, sans-serif;">LIBERAR ACESSO DE REVENDA</a>
+</div>
+""", unsafe_allow_html=True)
 
 # --- 9. FAQ ---
 st.markdown('<div id="faq" style="padding: 100px 20%; background: #080808;">', unsafe_allow_html=True)
