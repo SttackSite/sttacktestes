@@ -99,7 +99,8 @@ st.markdown("""
 
     /* 1 & 2. HERO RADICAL */
     .hero-section {
-        height: 100vh;
+        min-height: auto;
+        padding: 120px 8% 80px 8%;
         display: flex;
         flex-direction: column;
         justify-content: center;
