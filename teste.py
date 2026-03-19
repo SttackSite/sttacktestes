@@ -424,10 +424,10 @@ st.markdown('<div id="como-funciona" style="padding: 100px 8%; background: #0505
 st.markdown('<h2>PROCESSO <span class="serif-heavy">sem falhas.</span></h2><br><br>', unsafe_allow_html=True)
 
 steps = [
-    ("SELECIONE O MODELO IDEAL", "Escolha entre mais de 30 modelos validados o que mais combina com a identidade do seu negócio."),
-    ("CUSTOMIZAÇÃO RÁPIDA", "Utilize nosso ambiente exclusivo de edição para personalizar tudo o que precisar sem complicações."),
-    ("SETUP TÉCNICO GRATUITO", "Hospedamos seu site em minutos, com as melhores técnicas de SEO e com domínio Streamlit sem custo adicional, de forma rápida."),
-    ("LANÇAMENTO IMEDIATO", "Site no ar, otimizado e pronto para escalar seu negócio com uma estrutura de alta performance.")
+    ("ESCOLHA SEU MODELO IDEAL", "Escolha entre mais de 30 modelos validados o que mais combina com a identidade do seu negócio."),
+    ("PERSONALIZE DO SEU JEITO", "Edite tudo o que quiser diretamente no nosso editor simples e intuitivo. Teste diferentes versões até encontrar o layout perfeito para o seu negócio."),
+    ("NÓS FINALIZAMOS PARA VOCÊ", "Após sua escolha, nossa equipe ajusta, otimiza e entrega seu site 100% pronto, com domínio e performance profissional."),
+    ("PRONTO PARA VOCÊ APROVAR", "Receba seu site finalizado e veja tudo funcionando na prática. Gostou? A ativação para manter no ar custa somente R$39,90/mês.")
 ]
 
 for i, (title, desc) in enumerate(steps):
