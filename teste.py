@@ -568,7 +568,7 @@ with p2: # Featured
         <p>✓ Suporte técnico ágil</p>
     </div>
     """, unsafe_allow_html=True)
-    st.link_button("CRIAR MEU SITE AGORA", "https://pay.kiwify.com.br/fY9Kis9")
+    st.link_button("COMEÇAR AGORA", "https://pay.kiwify.com.br/fY9Kis9")
 
 with p3:
     st.markdown("""
@@ -586,7 +586,7 @@ with p3:
         <p>✓ Selo de parceiro desenvolvedor</p>
     </div>
     """, unsafe_allow_html=True)
-    st.button("LIBERAR ACESSO DE REVENDA", key="p3")
+    st.markdown('<a href="#precos" class="stButton"><button>LIBERAR ACESSO DE REVENDA</button></a>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 9. FAQ ---
