@@ -100,11 +100,10 @@ st.markdown("""
     /* 1 & 2. HERO RADICAL */
     .hero-section {
         min-height: auto;
-        padding: 120px 8% 80px 8%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 0 8%;
+        padding: 120px 8% 80px 8%;
         background: radial-gradient(circle at 80% 20%, #5800AB 0%, #050505 50%);
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
