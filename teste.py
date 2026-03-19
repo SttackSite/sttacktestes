@@ -463,6 +463,7 @@ st.markdown("""
 
 # --- 6. É PARA VOCÊ QUE ---
 st.markdown('<div id="quem-atendemos" style="padding: 120px 8%;">', unsafe_allow_html=True)
+st.markdown('<h2>PARA VOCÊ</h2><br><br>', unsafe_allow_html=True)
 col_u1, col_u2, col_u3 = st.columns(3)
 
 with col_u1:
