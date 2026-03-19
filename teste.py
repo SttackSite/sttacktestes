@@ -585,11 +585,7 @@ with p3:
         <p>✓ Suporte específico para parceiros</p>
         <p>✓ Selo de parceiro desenvolvedor</p>
     </div>
-    """, unsafe_allow_html=True)
-st.markdown("""
-<div style="margin-top: 16px;">
-    <a href="#precos" style="display: inline-block; background: linear-gradient(90deg, #7b2cbf, #9d4edd); color: white; border: none; padding: 25px 60px; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; border-radius: 0; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); text-decoration: none; cursor: pointer; font-family: Inter, sans-serif;">LIBERAR ACESSO DE REVENDA</a>
-</div>
+st.link_button("COMEÇAR AGORA", "https://pay.kiwify.com.br/fY9Kis9")
 """, unsafe_allow_html=True)
 
 # --- 9. FAQ ---
