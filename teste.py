@@ -1,32 +1,30 @@
 import streamlit as st
 
-st.set_page_config(page_title="FlowPay - Controle Financeiro", page_icon="💜", layout="wide")
+st.set_page_config(page_title="EduVibe - Aprenda do Seu Jeito", page_icon="🎓", layout="wide")
 
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap');
 
 :root {
-    --bg: #fafafa;
-    --white: #ffffff;
     --purple: #7c3aed;
-    --purple-light: #a78bfa;
-    --purple-dark: #5b21b6;
-    --pink: #ec4899;
-    --blue: #3b82f6;
-    --dark: #0f0a1e;
+    --purple-light: #ede9fe;
+    --yellow: #fbbf24;
+    --yellow-light: #fef9c3;
+    --pink: #f472b6;
+    --green: #34d399;
+    --bg: #f8f7ff;
+    --white: #ffffff;
     --text: #1e1b4b;
     --muted: #6b7280;
     --border: #e5e7eb;
-    --card-bg: #ffffff;
-    --green: #10b981;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body, [data-testid="stAppViewContainer"] {
     background: var(--bg) !important;
     color: var(--text) !important;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 [data-testid="stHeader"] { display: none; }
 [data-testid="stSidebar"] { display: none; }
@@ -38,457 +36,346 @@ section[data-testid="stVerticalBlock"] { gap: 0 !important; }
     position: fixed; top: 0; left: 0; right: 0; z-index: 999;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1rem 6%;
-    background: rgba(250,250,250,0.85); backdrop-filter: blur(20px);
+    background: rgba(248,247,255,0.92); backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
 }
-.nav-logo { display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.2rem; color: var(--text); }
-.nav-logo-icon {
-    width: 32px; height: 32px; border-radius: 8px;
-    background: linear-gradient(135deg, var(--purple), var(--pink));
-    display: flex; align-items: center; justify-content: center; color: white; font-size: 0.9rem;
-}
+.nav-logo { font-weight: 900; font-size: 1.4rem; color: var(--purple); }
+.nav-logo span { color: var(--yellow); }
 .nav-links { display: flex; gap: 2rem; }
-.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: color 0.3s; }
 .nav-links a:hover { color: var(--purple); }
-.nav-cta {
-    background: linear-gradient(135deg, var(--purple), var(--pink));
-    color: white; padding: 0.65rem 1.8rem; border-radius: 50px;
-    font-size: 0.875rem; font-weight: 700; text-decoration: none;
-    box-shadow: 0 4px 20px rgba(124,58,237,0.35);
-    transition: all 0.3s;
-}
-.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124,58,237,0.5); }
+.nav-btns { display: flex; gap: 0.75rem; align-items: center; }
+.nav-login { color: var(--purple); text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+.nav-cta { background: var(--purple); color: white; padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 0.875rem; font-weight: 800; text-decoration: none; }
 
 /* HERO */
-.hero {
-    padding: 9rem 6% 5rem; text-align: center;
-    background: var(--bg);
-    position: relative; overflow: hidden;
-}
-.hero-blob {
-    position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
-    width: 800px; height: 600px;
-    background: radial-gradient(ellipse at center, rgba(124,58,237,0.12) 0%, rgba(236,72,153,0.06) 50%, transparent 70%);
-    pointer-events: none;
-}
-.hero-chip {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--white); border: 1px solid var(--border);
-    padding: 0.4rem 1rem 0.4rem 0.4rem; border-radius: 50px;
-    font-size: 0.8rem; font-weight: 600; color: var(--text);
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-}
-.hero-chip-badge {
-    background: linear-gradient(135deg, var(--purple), var(--pink));
-    color: white; padding: 0.2rem 0.6rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700;
-}
-.hero h1 {
-    font-size: clamp(2.5rem, 5.5vw, 5rem);
-    font-weight: 800; line-height: 1.1;
-    color: var(--text);
-    margin-bottom: 1.5rem;
-}
-.hero h1 .gradient-text {
-    background: linear-gradient(135deg, var(--purple), var(--pink));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-.hero p { color: var(--muted); font-size: 1.1rem; line-height: 1.7; max-width: 550px; margin: 0 auto 2.5rem; }
-.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
-.btn-grad {
-    background: linear-gradient(135deg, var(--purple), var(--pink));
-    color: white; padding: 0.9rem 2.5rem; border-radius: 50px;
-    font-weight: 700; font-size: 1rem; text-decoration: none;
-    box-shadow: 0 8px 30px rgba(124,58,237,0.4); transition: all 0.3s;
-}
-.btn-grad:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(124,58,237,0.5); }
-.btn-outline {
-    background: white; color: var(--text); border: 1px solid var(--border);
-    padding: 0.9rem 2rem; border-radius: 50px;
-    font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.3s;
-}
-.btn-outline:hover { border-color: var(--purple); color: var(--purple); }
+.hero { padding: 8rem 6% 4rem; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; }
+.hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--yellow-light); color: #92400e; border-radius: 50px; padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 800; margin-bottom: 1.5rem; }
+.hero h1 { font-size: clamp(2.5rem, 4.5vw, 4rem); font-weight: 900; line-height: 1.15; color: var(--text); margin-bottom: 1.5rem; }
+.hero h1 span { color: var(--purple); }
+.hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--purple), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 2rem; font-family: 'Nunito Sans', sans-serif; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.btn-purple { background: var(--purple); color: white; padding: 0.9rem 2rem; border-radius: 14px; font-weight: 800; text-decoration: none; font-size: 1rem; transition: all 0.3s; box-shadow: 0 8px 24px rgba(124,58,237,0.3); }
+.btn-purple:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(124,58,237,0.4); }
+.btn-ghost { background: white; color: var(--text); border: 2px solid var(--border); padding: 0.9rem 1.5rem; border-radius: 14px; font-weight: 800; text-decoration: none; font-size: 0.95rem; transition: all 0.3s; }
+.btn-ghost:hover { border-color: var(--purple); color: var(--purple); }
+.hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+.h-stat .num { font-size: 1.4rem; font-weight: 900; color: var(--text); }
+.h-stat .label { font-size: 0.8rem; color: var(--muted); font-family: 'Nunito Sans', sans-serif; }
 
-/* HERO MOCKUP */
-.hero-mockup {
-    max-width: 900px; margin: 0 auto;
-    background: var(--white); border-radius: 24px;
-    border: 1px solid var(--border);
-    box-shadow: 0 40px 100px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.04);
-    padding: 2rem; position: relative;
+.hero-visual { position: relative; }
+.hero-card-main {
+    background: var(--purple); border-radius: 24px; padding: 2rem;
+    color: white; position: relative; overflow: hidden;
 }
-.mockup-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
-.mockup-title { font-weight: 800; font-size: 1.2rem; }
-.mockup-badge { background: rgba(16,185,129,0.1); color: var(--green); padding: 0.3rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; }
-.mockup-balance { text-align: center; margin-bottom: 2rem; }
-.balance-label { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.25rem; }
-.balance-amount { font-size: 3rem; font-weight: 800; color: var(--text); }
-.balance-change { color: var(--green); font-size: 0.9rem; font-weight: 600; }
-.mockup-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.mockup-card { background: var(--bg); border-radius: 16px; padding: 1.2rem; border: 1px solid var(--border); }
-.mc-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; margin-bottom: 0.75rem; }
-.mc-icon.purple { background: rgba(124,58,237,0.1); }
-.mc-icon.pink { background: rgba(236,72,153,0.1); }
-.mc-icon.blue { background: rgba(59,130,246,0.1); }
-.mc-label { color: var(--muted); font-size: 0.75rem; margin-bottom: 0.25rem; }
-.mc-value { font-weight: 700; font-size: 1rem; }
+.hero-card-main::before { content: ''; position: absolute; top: -20%; right: -20%; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.07); }
+.hcm-label { font-size: 0.8rem; opacity: 0.7; margin-bottom: 0.5rem; }
+.hcm-title { font-size: 1.1rem; font-weight: 900; margin-bottom: 1.5rem; }
+.hcm-students { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1rem; }
+.student-avatars { display: flex; }
+.s-av { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--purple); background: linear-gradient(135deg, #f472b6, #fb923c); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; color: white; margin-left: -8px; }
+.s-av:first-child { margin-left: 0; }
+.hcm-progress { background: rgba(255,255,255,0.2); border-radius: 50px; height: 8px; margin-bottom: 0.5rem; }
+.hcm-progress-fill { height: 100%; border-radius: 50px; background: var(--yellow); width: 67%; }
+.hcm-perc { font-size: 0.8rem; opacity: 0.8; }
 
-/* LOGOS */
-.logos-section { padding: 2.5rem 6%; background: white; border-top: 1px solid var(--border); }
-.logos-inner { display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap; }
-.logos-label { color: var(--muted); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-.logo-item { color: #c0c0cc; font-weight: 800; font-size: 0.95rem; letter-spacing: -0.3px; }
+.float-card { position: absolute; background: white; border-radius: 16px; padding: 1rem 1.2rem; box-shadow: 0 12px 40px rgba(0,0,0,0.1); border: 1px solid var(--border); }
+.float-card.top { top: -20px; right: -20px; }
+.float-card.bottom { bottom: -20px; left: -20px; }
+.fc-icon { font-size: 1.2rem; margin-bottom: 0.25rem; }
+.fc-text { font-weight: 800; font-size: 0.85rem; color: var(--text); }
+.fc-sub { font-size: 0.75rem; color: var(--muted); }
 
-/* FEATURES */
-.features-section { padding: 6rem 6%; }
-.section-center { text-align: center; margin-bottom: 3.5rem; }
-.chip {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    background: rgba(124,58,237,0.08); color: var(--purple);
-    padding: 0.35rem 1rem; border-radius: 50px;
-    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-    margin-bottom: 1rem;
-}
-.section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
-.section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto; }
-.features-bento { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 1.5rem; }
-.bento-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: all 0.3s; }
-.bento-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); border-color: rgba(124,58,237,0.2); }
-.bento-card.span2 { grid-column: span 2; }
-.bento-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1.2rem; }
-.bento-icon.p { background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(124,58,237,0.05)); }
-.bento-icon.g { background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.05)); }
-.bento-icon.b { background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(59,130,246,0.05)); }
-.bento-icon.pk { background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(236,72,153,0.05)); }
-.bento-title { font-weight: 700; font-size: 1.05rem; color: var(--text); margin-bottom: 0.5rem; }
-.bento-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
-.bento-stat { font-size: 2.5rem; font-weight: 800; margin-top: 1rem; }
-.bento-stat.purple { background: linear-gradient(135deg, var(--purple), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+/* BRANDS */
+.brands-section { padding: 2rem 6%; background: white; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap; }
+.brand-item { color: #c0c0d0; font-weight: 900; font-size: 1rem; }
 
-/* HOW IT WORKS */
-.how-section { padding: 6rem 6%; background: var(--dark); color: white; }
-.how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.how-steps { display: flex; flex-direction: column; gap: 2rem; }
-.how-step { display: flex; gap: 1.5rem; align-items: flex-start; }
-.how-num {
-    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
-    background: linear-gradient(135deg, var(--purple), var(--pink));
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 0.875rem; color: white;
-}
-.how-title { font-weight: 700; margin-bottom: 0.4rem; font-size: 1rem; }
-.how-desc { color: rgba(255,255,255,0.5); font-size: 0.875rem; line-height: 1.7; }
-.how-visual {
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px; padding: 2rem;
-}
-.hv-title { font-weight: 700; margin-bottom: 1.5rem; font-size: 0.95rem; color: rgba(255,255,255,0.7); }
-.hv-bar { margin-bottom: 1.2rem; }
-.hv-bar-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
-.hv-bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 50px; overflow: hidden; }
-.hv-bar-fill { height: 100%; border-radius: 50px; background: linear-gradient(90deg, var(--purple), var(--pink)); }
-.hv-users { display: flex; gap: 1rem; margin-top: 1.5rem; }
-.hv-user { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
-.hv-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: white; }
+/* SEARCH */
+.search-section { padding: 4rem 6%; }
+.search-wrap { background: white; border-radius: 20px; padding: 2rem; border: 1px solid var(--border); display: flex; gap: 1rem; align-items: center; max-width: 700px; margin: 0 auto; box-shadow: 0 8px 40px rgba(0,0,0,0.06); }
+.search-input { flex: 1; border: none; outline: none; font-size: 1rem; font-family: 'Nunito', sans-serif; color: var(--text); }
+.search-btn { background: var(--purple); color: white; border: none; padding: 0.8rem 1.8rem; border-radius: 12px; font-weight: 800; font-size: 0.9rem; cursor: pointer; font-family: 'Nunito', sans-serif; }
 
-/* PRICING */
-.pricing-section { padding: 6rem 6%; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 950px; margin: 3rem auto 0; }
-.price-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; position: relative; }
-.price-card.featured {
-    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-    border-color: transparent; color: white;
-    transform: scale(1.03);
-    box-shadow: 0 30px 80px rgba(124,58,237,0.4);
-}
-.price-chip { display: inline-block; background: rgba(255,255,255,0.15); color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; margin-bottom: 1.5rem; }
-.price-name { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
-.price-card.featured .price-name { color: rgba(255,255,255,0.7); }
-.price-amount { font-size: 3rem; font-weight: 800; color: var(--text); margin-bottom: 0.25rem; }
-.price-card.featured .price-amount { color: white; }
-.price-period { color: var(--muted); font-size: 0.85rem; margin-bottom: 2rem; }
-.price-card.featured .price-period { color: rgba(255,255,255,0.6); }
-.price-features { list-style: none; margin-bottom: 2rem; }
-.price-features li { padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem; }
-.price-card.featured .price-features li { border-bottom-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); }
-.check { color: var(--green); font-weight: 700; }
-.price-card.featured .check { color: rgba(255,255,255,0.9); }
-.price-btn { display: block; width: 100%; padding: 0.9rem; border-radius: 50px; text-align: center; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; }
-.price-btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
-.price-btn-outline:hover { border-color: var(--purple); color: var(--purple); }
-.price-btn-white { background: white; color: var(--purple); }
+/* BENEFITS */
+.benefits-section { padding: 5rem 6%; }
+.section-tag { display: inline-block; background: var(--purple-light); color: var(--purple); padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 800; margin-bottom: 1rem; }
+.section-title-left { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--text); margin-bottom: 1rem; line-height: 1.2; }
+.section-title-left span { color: var(--purple); }
+.benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.benefit-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 1.8rem; transition: all 0.3s; }
+.benefit-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); border-color: var(--purple-light); }
+.benefit-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--purple-light); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem; }
+.benefit-title { font-weight: 800; font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; }
+.benefit-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.7; font-family: 'Nunito Sans', sans-serif; }
+.benefit-num { font-size: 1.5rem; font-weight: 900; color: var(--purple); margin-top: 1rem; }
+
+/* COURSES */
+.courses-section { padding: 5rem 6%; background: var(--text); }
+.courses-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
+.courses-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: white; }
+.courses-header a { color: var(--yellow); text-decoration: none; font-weight: 800; font-size: 0.9rem; }
+.courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.course-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; transition: all 0.3s; }
+.course-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); }
+.course-thumb { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; }
+.thumb-1 { background: linear-gradient(135deg, #1e1b4b, #4c1d95); }
+.thumb-2 { background: linear-gradient(135deg, #14532d, #166534); }
+.thumb-3 { background: linear-gradient(135deg, #7c2d12, #9a3412); }
+.course-level { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.5); color: white; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; backdrop-filter: blur(4px); }
+.course-price-tag { position: absolute; top: 12px; right: 12px; background: var(--yellow); color: #92400e; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.8rem; font-weight: 800; }
+.course-body { padding: 1.5rem; }
+.course-cat { color: var(--yellow); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.5rem; }
+.course-title { font-weight: 800; color: white; font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.4; }
+.course-meta { display: flex; justify-content: space-between; color: rgba(255,255,255,0.4); font-size: 0.8rem; font-family: 'Nunito Sans', sans-serif; }
+
+/* TEACHER */
+.teacher-section { padding: 5rem 6%; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.teacher-visual { background: linear-gradient(135deg, var(--purple), #4c1d95); border-radius: 24px; padding: 3rem; text-align: center; color: white; }
+.teacher-avatar { width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto 1.5rem; }
+.teacher-name { font-size: 1.3rem; font-weight: 900; margin-bottom: 0.25rem; }
+.teacher-role { opacity: 0.7; font-size: 0.85rem; margin-bottom: 2rem; }
+.teacher-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.ts-item .ts-num { font-size: 1.5rem; font-weight: 900; color: var(--yellow); }
+.ts-item .ts-label { font-size: 0.75rem; opacity: 0.7; }
+.teacher-text h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: var(--text); margin-bottom: 1.5rem; line-height: 1.2; }
+.teacher-text h2 span { color: var(--purple); }
+.teacher-text p { color: var(--muted); line-height: 1.7; margin-bottom: 1rem; font-family: 'Nunito Sans', sans-serif; }
+.teacher-benefits { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.teacher-benefits li { display: flex; align-items: center; gap: 0.75rem; font-weight: 700; font-size: 0.9rem; }
+.tb-check { width: 24px; height: 24px; border-radius: 50%; background: var(--purple); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; flex-shrink: 0; }
 
 /* TESTIMONIALS */
-.testimonials-section { padding: 6rem 6%; background: var(--bg); }
-.t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-.t-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 2rem; }
-.t-stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 1rem; }
-.t-text { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem; }
+.testimonials-section { padding: 5rem 6%; background: var(--purple-light); }
+.t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.t-card { background: white; border-radius: 20px; padding: 2rem; border: 1px solid rgba(124,58,237,0.1); }
+.t-stars { color: var(--yellow); font-size: 1rem; margin-bottom: 1rem; }
+.t-text { color: var(--muted); font-size: 0.875rem; line-height: 1.7; margin-bottom: 1.5rem; font-family: 'Nunito Sans', sans-serif; }
 .t-author { display: flex; align-items: center; gap: 0.75rem; }
-.t-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--pink)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
-.t-name { font-weight: 700; font-size: 0.875rem; }
+.t-av { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--pink)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 0.85rem; flex-shrink: 0; }
+.t-name { font-weight: 800; font-size: 0.875rem; }
 .t-role { color: var(--muted); font-size: 0.8rem; }
 
 /* FAQ */
-.faq-section { padding: 6rem 6%; max-width: 750px; margin: 0 auto; }
+.faq-section { padding: 5rem 6%; max-width: 800px; margin: 0 auto; }
 .faq-item { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; }
-.faq-q { font-weight: 700; color: var(--text); margin-bottom: 0.75rem; font-size: 0.95rem; }
-.faq-a { color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
+.faq-q { font-weight: 800; margin-bottom: 0.75rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+.faq-q::before { content: '?'; background: var(--purple); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+.faq-a { color: var(--muted); font-size: 0.875rem; line-height: 1.7; font-family: 'Nunito Sans', sans-serif; }
 
 /* CTA */
-.cta-section {
-    margin: 0 4% 4rem;
-    border-radius: 28px; padding: 5rem; text-align: center;
-    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 60%, #1e1b4b 100%);
-    color: white; position: relative; overflow: hidden;
-}
-.cta-section::before {
-    content: ''; position: absolute; top: -50%; right: -20%;
-    width: 400px; height: 400px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(236,72,153,0.3) 0%, transparent 70%);
-}
-.cta-section h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; position: relative; }
-.cta-section p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 2.5rem; position: relative; }
-.btn-white { background: white; color: var(--purple); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.3s; display: inline-block; }
-.btn-white:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.25); }
+.cta-section { margin: 0 4% 4rem; border-radius: 28px; padding: 5rem 3rem; background: var(--purple); text-align: center; color: white; position: relative; overflow: hidden; }
+.cta-section::before { content: '🎓'; position: absolute; top: -20px; right: 5%; font-size: 8rem; opacity: 0.08; }
+.cta-section::after { content: '📚'; position: absolute; bottom: -20px; left: 5%; font-size: 8rem; opacity: 0.08; }
+.cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
+.cta-section p { font-size: 1rem; opacity: 0.8; margin-bottom: 2rem; }
+.btn-yellow { background: var(--yellow); color: #92400e; padding: 1rem 2.5rem; border-radius: 14px; font-weight: 900; font-size: 1rem; text-decoration: none; transition: all 0.3s; display: inline-block; }
+.btn-yellow:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
 
 /* FOOTER */
-.footer { padding: 3rem 6%; background: var(--dark); color: white; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-.footer-logo { display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.1rem; }
-.footer-logo-icon { width: 28px; height: 28px; border-radius: 7px; background: linear-gradient(135deg, var(--purple), var(--pink)); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+.footer { padding: 3rem 6%; background: var(--text); color: white; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-weight: 900; font-size: 1.2rem; }
+.footer-logo span { color: var(--yellow); }
 .footer-links { display: flex; gap: 2rem; }
-.footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
-.footer-links a:hover { color: white; }
+.footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.85rem; font-weight: 700; }
 .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
 
 @media (max-width: 900px) {
-    .mockup-cards, .features-bento, .pricing-grid, .t-grid { grid-template-columns: 1fr; }
-    .bento-card.span2 { grid-column: span 1; }
-    .how-grid { grid-template-columns: 1fr; }
+    .hero, .teacher-section { grid-template-columns: 1fr; }
+    .benefits-grid, .courses-grid, .t-grid { grid-template-columns: 1fr; }
 }
 </style>
 
 <nav class="nav">
-    <div class="nav-logo">
-        <div class="nav-logo-icon">💜</div>
-        FlowPay
-    </div>
+    <div class="nav-logo">Edu<span>Vibe</span></div>
     <div class="nav-links">
-        <a href="#">Início</a>
-        <a href="#">Recursos</a>
-        <a href="#">Preços</a>
-        <a href="#">Contato</a>
+        <a href="#">Cursos</a><a href="#">Professores</a><a href="#">Ofertas</a><a href="#">Contato</a>
     </div>
-    <a href="#" class="nav-cta">Teste Grátis</a>
+    <div class="nav-btns">
+        <a href="#" class="nav-login">Entrar</a>
+        <a href="#" class="nav-cta">Free Trial</a>
+    </div>
 </nav>
 
 <section class="hero">
-    <div class="hero-blob"></div>
-    <div class="hero-chip"><span class="hero-chip-badge">NOVO</span> Gestão Financeira com IA</div>
-    <h1>Potencialize seu<br><span class="gradient-text">controle financeiro</span><br>com FlowPay</h1>
-    <p>Simplifique a gestão financeira da sua empresa com nossa plataforma intuitiva e escalável. Projetada para empresas que crescem.</p>
-    <div class="hero-btns">
-        <a href="#" class="btn-grad">Começar Grátis — 14 dias</a>
-        <a href="#" class="btn-outline">▶ Assistir Demo</a>
+    <div>
+        <div class="hero-tag">🏆 Plataforma #1 de Aprendizado Online</div>
+        <h1>Desenvolva suas<br>habilidades de um<br>jeito <em>novo e único</em></h1>
+        <p>Acesse mais de 1.500 cursos com os melhores professores do Brasil. Aprenda no seu ritmo, certificado reconhecido pelo mercado.</p>
+        <div class="hero-btns">
+            <a href="#" class="btn-purple">Explorar Cursos →</a>
+            <a href="#" class="btn-ghost">🎓 Seja Professor</a>
+        </div>
+        <div class="hero-stats">
+            <div class="h-stat"><div class="num">1.5K+</div><div class="label">Cursos disponíveis</div></div>
+            <div class="h-stat"><div class="num">50K+</div><div class="label">Alunos ativos</div></div>
+            <div class="h-stat"><div class="num">98%</div><div class="label">Satisfação</div></div>
+        </div>
     </div>
-    <div class="hero-mockup">
-        <div class="mockup-header">
-            <div class="mockup-title">Painel Financeiro</div>
-            <div class="mockup-badge">● Ao Vivo</div>
+    <div class="hero-visual">
+        <div class="hero-card-main">
+            <div class="hcm-label">🎯 Continuando seu aprendizado</div>
+            <div class="hcm-title">UX/UI Design Avançado</div>
+            <div class="hcm-students">
+                <div class="student-avatars">
+                    <div class="s-av">A</div><div class="s-av">B</div><div class="s-av">C</div>
+                </div>
+                <span style="font-size:0.8rem;opacity:0.8;">+1.2K estudando agora</span>
+            </div>
+            <div class="hcm-progress"><div class="hcm-progress-fill"></div></div>
+            <div class="hcm-perc">67% concluído — Continue de onde parou!</div>
         </div>
-        <div class="mockup-balance">
-            <div class="balance-label">Saldo Total da Empresa</div>
-            <div class="balance-amount">R$ 847.392</div>
-            <div class="balance-change">↑ +12.4% este mês</div>
+        <div class="float-card top">
+            <div class="fc-icon">⭐</div>
+            <div class="fc-text">4.9/5.0</div>
+            <div class="fc-sub">Avaliação dos alunos</div>
         </div>
-        <div class="mockup-cards">
-            <div class="mockup-card"><div class="mc-icon purple">📊</div><div class="mc-label">Receita</div><div class="mc-value">R$ 124K</div></div>
-            <div class="mockup-card"><div class="mc-icon pink">💳</div><div class="mc-label">Despesas</div><div class="mc-value">R$ 38K</div></div>
-            <div class="mockup-card"><div class="mc-icon blue">📈</div><div class="mc-label">Lucro</div><div class="mc-value">R$ 86K</div></div>
+        <div class="float-card bottom">
+            <div class="fc-icon">📜</div>
+            <div class="fc-text">Certificado Incluso</div>
+            <div class="fc-sub">Reconhecido pelo mercado</div>
         </div>
     </div>
 </section>
 
-<div class="logos-section">
-    <div class="logos-inner">
-        <div class="logos-label">Confiado por +2.000 empresas</div>
-        <div class="logo-item">Mercado Pago</div>
-        <div class="logo-item">PagSeguro</div>
-        <div class="logo-item">Cielo</div>
-        <div class="logo-item">Itaú</div>
-        <div class="logo-item">Bradesco</div>
-    </div>
+<div class="brands-section">
+    <span style="color:var(--muted);font-size:0.8rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;">Parceiros</span>
+    <div class="brand-item">Duolingo</div>
+    <div class="brand-item">Microsoft</div>
+    <div class="brand-item">Magic Leap</div>
+    <div class="brand-item">CodeAcademy</div>
+    <div class="brand-item">LinkedIn</div>
 </div>
 
-<section class="features-section">
-    <div class="section-center">
-        <div class="chip">● Nosso Fluxo</div>
-        <div class="section-title">Como nossa plataforma<br>torna seu fluxo <span style="background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">mais fácil</span></div>
-        <div class="section-sub">Ferramentas poderosas que simplificam cada etapa da sua gestão financeira.</div>
+<section class="search-section">
+    <div style="text-align:center;margin-bottom:2rem;">
+        <div class="section-tag">🔍 Encontre seu Curso</div>
+        <div class="section-title-left" style="text-align:center;">Pesquisar em mais de <span>1.500 cursos</span></div>
     </div>
-    <div class="features-bento">
-        <div class="bento-card span2">
-            <div class="bento-icon p">📊</div>
-            <div class="bento-title">Dashboard Completo em Tempo Real</div>
-            <div class="bento-desc">Visualize todas as suas métricas financeiras em um único painel. Receitas, despesas, fluxo de caixa e projeções — tudo atualizado em tempo real.</div>
-            <div class="bento-stat purple">+87%</div>
-            <div style="color:var(--muted);font-size:0.8rem;">de aumento em eficiência operacional</div>
+    <div class="search-wrap">
+        <span style="font-size:1.2rem;">🔍</span>
+        <input class="search-input" placeholder="Pesquisar por curso, habilidade ou professor..." />
+        <button class="search-btn">Buscar</button>
+    </div>
+</section>
+
+<section class="benefits-section">
+    <div class="section-tag">✨ Vantagens</div>
+    <div class="section-title-left">Os benefícios da<br>nossa <span>plataforma</span></div>
+    <div class="benefits-grid">
+        <div class="benefit-card">
+            <div class="benefit-icon">🎓</div>
+            <div class="benefit-title">Formação Certificada</div>
+            <div class="benefit-desc">Certificados reconhecidos pelas maiores empresas do mercado. Adicione ao seu LinkedIn imediatamente.</div>
+            <div class="benefit-num">500+</div>
+            <div style="font-size:0.8rem;color:var(--muted);">certificações disponíveis</div>
         </div>
-        <div class="bento-card">
-            <div class="bento-icon g">🔗</div>
-            <div class="bento-title">Integração Bancária Total</div>
-            <div class="bento-desc">Conecte todas as suas contas bancárias, cartões de crédito e investimentos em minutos.</div>
+        <div class="benefit-card">
+            <div class="benefit-icon">⏰</div>
+            <div class="benefit-title">Aprenda no Seu Ritmo</div>
+            <div class="benefit-desc">Cursos disponíveis 24/7. Assista offline, pause e continue quando quiser. Sem prazo de validade.</div>
+            <div class="benefit-num">24/7</div>
+            <div style="font-size:0.8rem;color:var(--muted);">acesso ilimitado</div>
         </div>
-        <div class="bento-card">
-            <div class="bento-icon b">🤖</div>
-            <div class="bento-title">IA Preditiva</div>
-            <div class="bento-desc">Nossa IA analisa seus dados e prevê seu fluxo de caixa para os próximos meses.</div>
-        </div>
-        <div class="bento-card">
-            <div class="bento-icon pk">📱</div>
-            <div class="bento-title">App Mobile</div>
-            <div class="bento-desc">Gerencie suas finanças de qualquer lugar com nosso app iOS e Android.</div>
-        </div>
-        <div class="bento-card">
-            <div class="bento-icon p">🔒</div>
-            <div class="bento-title">Segurança Bancária</div>
-            <div class="bento-desc">Criptografia de nível bancário e conformidade com regulamentações do Banco Central.</div>
-        </div>
-        <div class="bento-card">
-            <div class="bento-icon g">📋</div>
-            <div class="bento-title">Relatórios Automáticos</div>
-            <div class="bento-desc">Relatórios contábeis e gerenciais gerados automaticamente toda semana.</div>
+        <div class="benefit-card">
+            <div class="benefit-icon">🌍</div>
+            <div class="benefit-title">Múltiplos Idiomas</div>
+            <div class="benefit-desc">Cursos em português, inglês e espanhol com legendas automáticas em mais de 20 idiomas.</div>
+            <div class="benefit-num">20+</div>
+            <div style="font-size:0.8rem;color:var(--muted);">idiomas disponíveis</div>
         </div>
     </div>
 </section>
 
-<section class="how-section">
-    <div class="section-center" style="margin-bottom:3.5rem;">
-        <div class="chip" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);">● Como Funciona</div>
-        <div class="section-title" style="color:white;">Comece em 3 passos simples</div>
-        <div class="section-sub" style="color:rgba(255,255,255,0.5);">Setup rápido. Sem burocracia. Começe a gerenciar em minutos.</div>
+<section class="courses-section">
+    <div class="courses-header">
+        <h2>Nossos Cursos Populares</h2>
+        <a href="#">Ver todos os cursos →</a>
     </div>
-    <div class="how-grid">
-        <div class="how-steps">
-            <div class="how-step">
-                <div class="how-num">01</div>
-                <div><div class="how-title">Crie sua conta</div><div class="how-desc">Cadastro em menos de 2 minutos. Sem cartão de crédito para começar.</div></div>
-            </div>
-            <div class="how-step">
-                <div class="how-num">02</div>
-                <div><div class="how-title">Conecte suas contas</div><div class="how-desc">Vincule seus bancos e cartões de forma segura com autenticação bancária.</div></div>
-            </div>
-            <div class="how-step">
-                <div class="how-num">03</div>
-                <div><div class="how-title">Gerencie e cresça</div><div class="how-desc">Acesse insights poderosos e tome decisões financeiras com confiança.</div></div>
+    <div class="courses-grid">
+        <div class="course-card">
+            <div class="course-thumb thumb-1">🎨<span class="course-level">Iniciante</span><span class="course-price-tag">R$297</span></div>
+            <div class="course-body">
+                <div class="course-cat">UX/UI Design</div>
+                <div class="course-title">Web Design & Desenvolvimento</div>
+                <div class="course-meta"><span>⭐ 4.9 (2.3K)</span><span>42 horas</span></div>
             </div>
         </div>
-        <div class="how-visual">
-            <div class="hv-title">Distribuição Financeira — Agosto 2025</div>
-            <div class="hv-bar"><div class="hv-bar-label"><span>Receita Recorrente</span><span>68%</span></div><div class="hv-bar-track"><div class="hv-bar-fill" style="width:68%"></div></div></div>
-            <div class="hv-bar"><div class="hv-bar-label"><span>Novas Vendas</span><span>45%</span></div><div class="hv-bar-track"><div class="hv-bar-fill" style="width:45%"></div></div></div>
-            <div class="hv-bar"><div class="hv-bar-label"><span>Custos Operacionais</span><span>22%</span></div><div class="hv-bar-track"><div class="hv-bar-fill" style="width:22%;background:linear-gradient(90deg,#10b981,#34d399)"></div></div></div>
-            <div class="hv-users">
-                <div class="hv-user"><div class="hv-avatar" style="background:linear-gradient(135deg,#7c3aed,#ec4899)">A</div>Analítico</div>
-                <div class="hv-user"><div class="hv-avatar" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)">E</div>Executivo</div>
-                <div class="hv-user"><div class="hv-avatar" style="background:linear-gradient(135deg,#10b981,#34d399)">C</div>Contábil</div>
+        <div class="course-card">
+            <div class="course-thumb thumb-2">📊<span class="course-level">Avançado</span><span class="course-price-tag">R$497</span></div>
+            <div class="course-body">
+                <div class="course-cat">Data Science</div>
+                <div class="course-title">Workbench & Business Intelligence</div>
+                <div class="course-meta"><span>⭐ 4.8 (1.8K)</span><span>38 horas</span></div>
+            </div>
+        </div>
+        <div class="course-card">
+            <div class="course-thumb thumb-3">🐍<span class="course-level">Intermediário</span><span class="course-price-tag">R$397</span></div>
+            <div class="course-body">
+                <div class="course-cat">Programação</div>
+                <div class="course-title">Python para Data Analysis</div>
+                <div class="course-meta"><span>⭐ 4.9 (3.1K)</span><span>55 horas</span></div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="pricing-section">
-    <div class="section-center">
-        <div class="chip">● Preços</div>
-        <div class="section-title">Plano ideal para<br>cada tamanho de empresa</div>
+<section class="teacher-section">
+    <div class="teacher-visual">
+        <div class="teacher-avatar">👨‍🏫</div>
+        <div class="teacher-name">Prof. Marcus Oliveira</div>
+        <div class="teacher-role">Especialista em UX Design & Tecnologia</div>
+        <div class="teacher-stats">
+            <div class="ts-item"><div class="ts-num">12K+</div><div class="ts-label">Alunos</div></div>
+            <div class="ts-item"><div class="ts-num">4.9</div><div class="ts-label">Avaliação</div></div>
+            <div class="ts-item"><div class="ts-num">18</div><div class="ts-label">Cursos</div></div>
+        </div>
     </div>
-    <div class="pricing-grid">
-        <div class="price-card">
-            <div class="price-name">Starter</div>
-            <div class="price-amount">R$0</div>
-            <div class="price-period">para sempre grátis</div>
-            <ul class="price-features">
-                <li><span class="check">✓</span> Até 3 contas bancárias</li>
-                <li><span class="check">✓</span> Dashboard básico</li>
-                <li><span class="check">✓</span> Relatórios mensais</li>
-                <li><span class="check">✓</span> Suporte por email</li>
-            </ul>
-            <a href="#" class="price-btn price-btn-outline">Começar Grátis</a>
-        </div>
-        <div class="price-card featured">
-            <div class="price-chip">⭐ MAIS POPULAR</div>
-            <div class="price-name">Business</div>
-            <div class="price-amount">R$249</div>
-            <div class="price-period">/mês · cancele quando quiser</div>
-            <ul class="price-features">
-                <li><span class="check">✓</span> Contas ilimitadas</li>
-                <li><span class="check">✓</span> IA preditiva inclusa</li>
-                <li><span class="check">✓</span> Relatórios automáticos</li>
-                <li><span class="check">✓</span> App mobile completo</li>
-                <li><span class="check">✓</span> Suporte prioritário 24/7</li>
-            </ul>
-            <a href="#" class="price-btn price-btn-white">Teste 14 dias Grátis</a>
-        </div>
-        <div class="price-card">
-            <div class="price-name">Enterprise</div>
-            <div class="price-amount">R$799</div>
-            <div class="price-period">/mês · tudo incluso</div>
-            <ul class="price-features">
-                <li><span class="check">✓</span> Multi-empresas</li>
-                <li><span class="check">✓</span> API completa</li>
-                <li><span class="check">✓</span> White label</li>
-                <li><span class="check">✓</span> Gerente dedicado</li>
-            </ul>
-            <a href="#" class="price-btn price-btn-outline">Falar com Vendas</a>
-        </div>
+    <div class="teacher-text">
+        <h2>Quer <span>ensinar</span> e ganhar dinheiro com o que sabe?</h2>
+        <p>Na EduVibe, você tem toda a estrutura para criar e vender seus cursos. Sem precisar se preocupar com tecnologia, pagamentos ou marketing.</p>
+        <ul class="teacher-benefits">
+            <li><div class="tb-check">✓</div>Plataforma completa para criar cursos</li>
+            <li><div class="tb-check">✓</div>Pagamentos automáticos todo mês</li>
+            <li><div class="tb-check">✓</div>Suporte de marketing e vendas</li>
+            <li><div class="tb-check">✓</div>Comunidade de professores exclusiva</li>
+        </ul>
+        <a href="#" class="btn-purple" style="display:inline-block;margin-top:1.5rem;">Tornar-me Professor →</a>
     </div>
 </section>
 
 <section class="testimonials-section">
-    <div class="section-center">
-        <div class="chip">● Depoimentos</div>
-        <div class="section-title">Amado por empresas<br>ao redor do Brasil</div>
+    <div style="text-align:center;">
+        <div class="section-tag">💬 Depoimentos</div>
+        <div class="section-title-left" style="text-align:center;">O que nossos <span>alunos</span> dizem</div>
     </div>
     <div class="t-grid">
-        <div class="t-card">
-            <div class="t-stars">★★★★★</div>
-            <div class="t-text">"O FlowPay transformou como gerenciamos o financeiro. Em 2 meses economizamos 30h mensais de trabalho manual."</div>
-            <div class="t-author"><div class="t-avatar">JS</div><div><div class="t-name">João Silva</div><div class="t-role">CFO, Construtora Regional</div></div></div>
-        </div>
-        <div class="t-card">
-            <div class="t-stars">★★★★★</div>
-            <div class="t-text">"A previsão de fluxo de caixa com IA nos salvou de uma crise. Detectou o problema 3 meses antes de acontecer."</div>
-            <div class="t-author"><div class="t-avatar">MC</div><div><div class="t-name">Maria Costa</div><div class="t-role">CEO, Rede de Franquias</div></div></div>
-        </div>
-        <div class="t-card">
-            <div class="t-stars">★★★★★</div>
-            <div class="t-text">"Integração impecável. Conectou todos os nossos bancos em minutos. Interface linda e fácil de usar para toda equipe."</div>
-            <div class="t-author"><div class="t-avatar">PR</div><div><div class="t-name">Paulo Rocha</div><div class="t-role">Diretor Financeiro, Tech Startup</div></div></div>
-        </div>
+        <div class="t-card"><div class="t-stars">★★★★★</div><div class="t-text">"Consegui meu primeiro emprego como UX Designer em 4 meses de estudo na EduVibe. Os cursos são incrivelmente práticos!"</div><div class="t-author"><div class="t-av">LM</div><div><div class="t-name">Laura Mendes</div><div class="t-role">UX Designer Jr.</div></div></div></div>
+        <div class="t-card"><div class="t-stars">★★★★★</div><div class="t-text">"Saí de analista financeiro para Cientista de Dados. O curso de Python foi decisivo. Meu salário dobrou em 8 meses."</div><div class="t-author"><div class="t-av">FG</div><div><div class="t-name">Felipe Gomes</div><div class="t-role">Data Scientist</div></div></div></div>
+        <div class="t-card"><div class="t-stars">★★★★★</div><div class="t-text">"Qualidade dos professores é excepcional. Aprendes na teoria e na prática com projetos reais. Vale cada centavo!"</div><div class="t-author"><div class="t-av">CA</div><div><div class="t-name">Camila Alves</div><div class="t-role">Desenvolvedora Front-end</div></div></div></div>
     </div>
 </section>
 
 <section class="faq-section">
-    <div class="section-center">
-        <div class="chip">● FAQ</div>
-        <div class="section-title">Perguntas Frequentes</div>
+    <div style="text-align:center;margin-bottom:2.5rem;">
+        <div class="section-tag">❓ FAQ</div>
+        <div class="section-title-left" style="text-align:center;">Tire suas <span>dúvidas</span></div>
     </div>
-    <div class="faq-item"><div class="faq-q">💜 Os meus dados financeiros estão seguros?</div><div class="faq-a">Sim! Usamos criptografia AES-256, autenticação de dois fatores e somos certificados pelo Banco Central do Brasil. Seus dados nunca são compartilhados com terceiros.</div></div>
-    <div class="faq-item"><div class="faq-q">💜 Quais bancos são suportados?</div><div class="faq-a">Integramos com mais de 40 bancos brasileiros, incluindo Itaú, Bradesco, Santander, Nubank, Inter, C6 e todos os bancos do Open Finance.</div></div>
-    <div class="faq-item"><div class="faq-q">💜 Posso cancelar a qualquer momento?</div><div class="faq-a">Sim, sem multas ou contratos longos. Cancele com um clique. Você mantém acesso até o final do período pago.</div></div>
-    <div class="faq-item"><div class="faq-q">💜 O plano Business tem limite de usuários?</div><div class="faq-a">O Business inclui até 10 usuários. Para equipes maiores, o plano Enterprise oferece usuários ilimitados.</div></div>
+    <div class="faq-item"><div class="faq-q">Os certificados são reconhecidos pelo mercado?</div><div class="faq-a">Sim! Nossos certificados são parceiros oficiais da Microsoft, Google e LinkedIn. Amplamente reconhecidos por empresas de tecnologia no Brasil e exterior.</div></div>
+    <div class="faq-item"><div class="faq-q">Posso assistir offline?</div><div class="faq-a">Sim! No app mobile você pode baixar as aulas para assistir sem internet. Perfeito para estudar no transporte ou sem conexão.</div></div>
+    <div class="faq-item"><div class="faq-q">Tem garantia de satisfação?</div><div class="faq-a">7 dias de garantia total. Se não gostar, devolvemos 100% do seu dinheiro, sem perguntas.</div></div>
+    <div class="faq-item"><div class="faq-q">Posso parcelar o pagamento?</div><div class="faq-a">Sim! Em até 12x sem juros no cartão de crédito. Ou à vista com 20% de desconto.</div></div>
 </section>
 
 <div class="cta-section">
-    <h2>Pronto para dominar<br>suas finanças?</h2>
-    <p>Junte-se a mais de 2.000 empresas que já escolheram o FlowPay.</p>
-    <a href="#" class="btn-white">Começar Gratuitamente →</a>
+    <h2>Comece sua jornada de<br>aprendizado hoje!</h2>
+    <p>Mais de 50.000 alunos já transformaram suas carreiras. Junte-se a eles!</p>
+    <a href="#" class="btn-yellow">🚀 Começar Agora — 7 dias grátis</a>
 </div>
 
 <footer class="footer">
-    <div class="footer-logo"><div class="footer-logo-icon">💜</div> FlowPay</div>
-    <div class="footer-links"><a href="#">Privacidade</a><a href="#">Termos</a><a href="#">Blog</a><a href="#">Contato</a></div>
-    <div class="footer-copy">© 2025 FlowPay. Todos os direitos reservados.</div>
+    <div class="footer-logo">Edu<span>Vibe</span></div>
+    <div class="footer-links"><a href="#">Privacidade</a><a href="#">Termos</a><a href="#">Blog</a><a href="#">Suporte</a></div>
+    <div class="footer-copy">© 2025 EduVibe. Todos os direitos reservados.</div>
 </footer>
 """, unsafe_allow_html=True)
